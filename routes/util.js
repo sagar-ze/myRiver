@@ -20,6 +20,6 @@ module.exports= function distance(lat1, lon1, lat2, lon2, unit) {
     }
 }
 // distance(-31.899908,115.9615,-31.899942,115.961296)
-module.exports=function predectiveTime(dist,time){
+module.exports=function predictiveTime(dist,time){
     return dist/time
 }

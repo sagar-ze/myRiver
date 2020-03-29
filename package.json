@@ -6,6 +6,9 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@turf/area": "^6.0.1",
+    "@turf/point-to-line-distance": "^6.0.0",
+    "@turf/turf": "^5.1.6",
     "config": "^3.3.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

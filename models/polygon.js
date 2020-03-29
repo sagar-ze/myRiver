@@ -1,27 +1,47 @@
+// const mongoose = require("mongoose");
+
+// const polygonSchema = new mongoose.Schema({
+//   type: String,
+//   properties: {
+//     REGTYPE_ID: Number,
+//     REGTYPE: String,
+//     NAVWAT_ID: Number,
+//     Shape_Leng: Number,
+//     Shape_Area: Number
+//   },
+//   geometry: {
+//     coordinates: {
+//       type: [[[Number]]],
+//       // required: true
+//     },
+//     type: {
+//       enum: ["Polygon"]
+//     },
+//   }
+// });
+//  polygonSchema.index({ 'geometry.coordinates': "2dsphere" });
+// const Polygon = mongoose.model("Polygon", polygonSchema);
+// Polygon.on('index', function(error) {
+//   // "_id index cannot be sparse"
+//   if(error) console.log(error);
+// });
+// exports.polygonSchema = polygonSchema;
+// exports.Polygon = Polygon;
 const mongoose = require("mongoose");
 
 const polygonSchema = new mongoose.Schema({
-  type:String,
-  properties: {
-    REGTYPE_ID: Number,
-    REGTYPE: String,
-    NAVWAT_ID: Number,
-    Shape_Leng: Number,
-    Shape_Area: Number
-  },
-  geometry: {
+
+  location: {
     coordinates: {
-      type: [Number],
-      index: '2dsphere',
-      required: true
+      type: [[[Number]]]
     },
     type: {
-      enum: ["Polygon"]
-    
+      type: "String",
+      default: "Polygon"
     }
   }
 });
-polygonSchema.index({ geometry: '2dsphere' }, { background: false })
+ polygonSchema.index({ location: "2dsphere" });
 const Polygon = mongoose.model("Polygon", polygonSchema);
 
 exports.polygonSchema = polygonSchema;

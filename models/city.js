@@ -6,7 +6,6 @@ const citySchema = new mongoose.Schema({
   location: polygonSchema, 
   type: String
 });
-//  polygonSchema.index({geometry: '2dsphere'});
 const City = mongoose.model("City", citySchema);
 
 module.exports.City = City;

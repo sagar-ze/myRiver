@@ -4,7 +4,7 @@ const dbDebug = require("debug")("app:db");
 module.exports = () => {
   mongoose
     //  .connect("mongodb+srv://sagar:sagar@cluster0-zgbsj.mongodb.net/test?retryWrites=true&w=majority", {
-     .connect("mongodb://localhost/geoSpatial", {
+     .connect("mongodb://localhost/sagar", {
 
       useNewUrlParser: true,
       useUnifiedTopology: true,
