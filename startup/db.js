@@ -3,7 +3,7 @@ const dbDebug = require("debug")("app:db");
 
 module.exports = () => {
   mongoose
-    //  .connect("mongodb+srv://sagar:sagar@cluster0-zgbsj.mongodb.net/test?retryWrites=true&w=majority", {
+    //  .connect(config.get('db), {
      .connect("mongodb://localhost/sagar", {
 
       useNewUrlParser: true,

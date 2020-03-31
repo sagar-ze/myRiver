@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const Joi = require("@hapi/joi");
-
+const config=require('config')
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -34,7 +34,7 @@ userSchema.methods.generateAuthToken = function() {
     username: this.username,
     email: this.email,
     isAdmin: this.isAdmin
-  },process.env.JWT_PRIVATE_KEY);
+  },config.get("JWT_PRIVATE_KEY"));
   return token;
 };
 

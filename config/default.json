@@ -1,0 +1,6 @@
+{
+    "JWT_PRIVATE_KEY": "tekkon",
+    "DB": "mongodb+srv://sagar:sagar@cluster0-zgbsj.mongodb.net/test?retryWrites=true&w=majority",
+    "PORT": "1234",
+    "requiresAuth": true
+  }

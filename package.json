@@ -7,12 +7,9 @@
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "@turf/area": "^6.0.1",
-    "@turf/point-to-line-distance": "^6.0.0",
-    "@turf/turf": "^5.1.6",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
-    "config": "^3.3.0",
+    "config": "^3.3.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
@@ -22,8 +19,6 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "mapbox": "^1.0.0-beta10",
-    "mapbox-gl": "^1.9.0",
     "mongoose": "^5.9.6",
     "mongoose-geojson-schema": "^2.1.5",
     "morgan": "~1.9.1"
