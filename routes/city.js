@@ -38,9 +38,7 @@ Inside restricted Area
 */
 router.get("/inside-restricted-area", async function(req, res, next) {
   const { lng, lat, speed } = req.query;
-  console.log(req.query);
-  try {
-   
+
       const polygon = await City.find({
         "features.geometry": {
           $geoIntersects: {
@@ -67,9 +65,6 @@ router.get("/inside-restricted-area", async function(req, res, next) {
       } else {
       return res.status(200).send({message:'You have a fine speed', emoji: "😇" });
     }
-  } catch (ex) {
-    console.log(ex);
-  }
 });
 
 /* 
@@ -77,7 +72,6 @@ Speed limit
 */
 router.get("/near-speed-limit", async (req, res, next) => {
   const { lng, lat, speed } = req.query;
-  try {
     const polygon = await City.aggregate([
       {
         $geoNear: {
@@ -115,9 +109,6 @@ router.get("/near-speed-limit", async (req, res, next) => {
           calculated
         )} meters away from from restricted Area\n  ${predictiveTime}`
       );
-  } catch (ex) {
-    console.log(ex);
-  }
 });
 
 module.exports = router;
