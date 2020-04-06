@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const _ = require("lodash");
-const turf = require("@turf/turf");
 const { City } = require("../models/city");
 const { Polygon } = require("../models/polygon");
 
