@@ -22,12 +22,12 @@ router.post("/", async (req, res) => {
 
   const toilet = new Toilet(data);
   await toilet.save();
-  res.status(200).send("Successful !");
+  res.status(200).json({status:'success',message:'Jetties saved !'});
 });
 
 router.get("/", async (req, res) => {
   const { lat, lng } =req.query;
-  console.log(req.query);
+
   const toilet = await Toilet.aggregate([
     {
       $geoNear: {
@@ -42,8 +42,8 @@ router.get("/", async (req, res) => {
     }
   ]);
   if (toilet === undefined || toilet.length === 0)
-    return res.status(200).send("Toilet not found");
-  res.status(200).send(toilet);
+  return res.status(400).json({status:'failure',message:"toilet not found"});
+  res.status(200).json({status:'success',message:"There a toilet near 1 km radius",data:toilet});
 });
 
 module.exports = router;

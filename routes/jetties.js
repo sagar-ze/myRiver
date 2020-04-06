@@ -26,12 +26,11 @@ router.post("/", async (req, res) => {
   };
   let jetties = new Jetties(data);
   jetties.save();
-  res.status(200).send(jetties);
+  res.status(200).json({status:'success',message:'Jetties saved !'});
 });
 
 router.get("/", async (req, res) => {
     const { lat, lng } =req.query;
-    console.log(req.query);
     const jetties = await Jetties.aggregate([
       {
         $geoNear: {
@@ -46,7 +45,7 @@ router.get("/", async (req, res) => {
       }
     ]);
     if (jetties === undefined || jetties.length === 0)
-      return res.status(400).send("Jetties not found");
-    res.status(200).send(jetties);
+      return res.status(400).json({status:'failure',message:"Jetties not found"});
+    res.status(200).json({status:'success',message:"There a Jetties near 1 km radius",data:jetties});
   });
 module.exports = router;

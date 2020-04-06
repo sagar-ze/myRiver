@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
     }
   });
   await whadjuks.save();
-  res.status(200).send("Successful !");
+  res.status(200).json({status:'success',message:'Jetties saved !'});
 });
 
 router.get("/", async (req, res) => {
@@ -36,8 +36,8 @@ router.get("/", async (req, res) => {
     }
   ]);
   if (whadJuks === undefined || whadJuks.length === 0)
-    return res.status(200).send("WhadJuks not found");
-  res.status(200).send(whadJuks);
+  return res.status(400).json({status:'failure',message:"whadjuks not found"});
+  res.status(200).json({status:'success',message:"There a whadjuks near 1 km radius",data: whadJuks});
 });
 
 module.exports = router;

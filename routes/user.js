@@ -6,10 +6,10 @@ const { User, Validate } = require("../models/user");
 
 router.post("/register", async (req, res, next) => {
   const { error } = Validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({status:'failure',message:error.details[0].message});
 
   let user = await User.findOne({ email: req.body.email });
-  if (user) return res.status(400).send("User already exist !");
+  if (user) return res.status(400).json({status:'failure',message:"User already exist !"});
 
   user = new User(_.pick(req.body, ["username", "email", "password"]));
   const salt = await bcrypt.genSalt(10);
@@ -20,7 +20,6 @@ router.post("/register", async (req, res, next) => {
   res
     .header("x-auth-token", token)
     .header("access-control-expose-headers", "x-auth-token")
-    .send(_.pick(user, ["_id", "username", "email"]));
 });
 
 module.exports = router;

@@ -19,7 +19,7 @@ const polygonSchema = new mongoose.Schema({
     }
   }
 });
-polygonSchema.index({ geometry: "2dsphere" });
+ polygonSchema.index({ geometry: "2dsphere" });
 const Polygon = mongoose.model("Polygon", polygonSchema);
 
 exports.polygonSchema = polygonSchema;
